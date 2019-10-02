@@ -6,14 +6,14 @@ use Sitesauce\Wordpress\UI\SettingsScreen;
 use Sitesauce\Wordpress\WebhookTrigger;
 use Sitesauce\Wordpress\Settings;
 
-class App
+final class App
 {
     /**
      * Singleton instance
      * 
      * @var null|App
      */
-    protected static $instance = null;
+    private static $instance = null;
 
     /**
      * Create a new singleton instance
@@ -22,11 +22,11 @@ class App
      */
     public static function instance()
     {
-        if (!is_a(App::$instance, App::class)) {
-            App::$instance = new App;
+        if (is_null(self::$instance)) {
+        	self::$instance = new self();
         }
 
-        return App::$instance;
+        return self::$instance;
     }
 
     /**
@@ -34,7 +34,7 @@ class App
      * 
      * @return void
      */
-    protected function __construct()
+    private function __construct()
     {
         $this->constants();
         $this->includes();
@@ -74,9 +74,6 @@ class App
      */
     protected function hooks()
     {
-        register_activation_hook(SITESAUCE_DEPLOYMENTS_FILE, [$this, 'activation']);
-        register_deactivation_hook(SITESAUCE_DEPLOYMENTS_FILE, [$this, 'deactivation']);
-
         SettingsScreen::init();
         Settings::init();
     }
