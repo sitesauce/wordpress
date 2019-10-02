@@ -21,4 +21,11 @@ define('SITESAUCE_DEPLOYMENTS_URL', untrailingslashit(plugin_dir_url(__FILE__)))
 
 require_once(SITESAUCE_DEPLOYMENTS_PATH.'/src/App.php');
 
-Sitesauce\Wordpress\App::instance();
+function Sitesauce()
+{
+	return Sitesauce\Wordpress\App::instance();
+}
+
+register_activation_hook(SITESAUCE_DEPLOYMENTS_FILE, Sitesauce()->activation());
+
+register_deactivation_hook(SITESAUCE_DEPLOYMENTS_FILE, Sitesauce()->deactivation());
