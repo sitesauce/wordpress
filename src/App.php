@@ -37,7 +37,7 @@ final class App
     private function __construct()
     {
         $this->constants();
-        $this->includes();
+        $this->includes(__DIR__, ['App.php']);
         $this->hooks();
     }
 
@@ -51,20 +51,24 @@ final class App
         define('SITESAUCE_DEPLOYMENTS_OPTIONS_KEY', 'wp_sitesauce_deployments');
     }
 
-    /**
-     * Include/require files
-     *
-     * @return void
-     */
-    protected function includes()
+	/**
+	 * Include/require files
+	 *
+	 * @param null $dir
+	 * @param array $exclude
+	 *
+	 * @return void
+	 */
+    protected function includes($dir = null, $exclude = [])
     {
-        require_once (SITESAUCE_DEPLOYMENTS_PATH.'/src/UI/SettingsScreen.php');
+	    $dir = new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS);
+		$files = new \RecursiveIteratorIterator($dir);
 
-        require_once (SITESAUCE_DEPLOYMENTS_PATH.'/src/Settings.php');
-        require_once (SITESAUCE_DEPLOYMENTS_PATH.'/src/WebhookTrigger.php');
-        require_once (SITESAUCE_DEPLOYMENTS_PATH.'/src/Field.php');
-
-        require_once (SITESAUCE_DEPLOYMENTS_PATH.'/src/functions.php');
+	    foreach ($files as $file) {
+			if (! in_array($file->getFilename(), $exclude)) {
+				require_once $file->getRealpath();
+			}
+	    }
     }
 
     /**
