@@ -91,7 +91,7 @@ class WebhookTrigger
 
         do_action('sitesauce_deployments_before_fire_webhook');
 
-        $return = wp_safe_remote_get($webhook, $args);
+        $return = wp_remote_get($webhook, $args);
 
         do_action('sitesauce_deployments_after_fire_webhook');
 

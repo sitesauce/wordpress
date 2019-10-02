@@ -26,6 +26,6 @@ function Sitesauce()
 	return Sitesauce\Wordpress\App::instance();
 }
 
-register_activation_hook(SITESAUCE_DEPLOYMENTS_FILE, Sitesauce()->activation());
+register_activation_hook(SITESAUCE_DEPLOYMENTS_FILE, [Sitesauce(), 'activation']);
 
-register_deactivation_hook(SITESAUCE_DEPLOYMENTS_FILE, Sitesauce()->deactivation());
+register_deactivation_hook(SITESAUCE_DEPLOYMENTS_FILE, [Sitesauce(), 'deactivation']);
