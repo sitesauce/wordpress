@@ -75,23 +75,19 @@ class WebhookTrigger
      */
     public static function fireWebhook()
     {
-        $webhook = sitesauce_deployments_get_build_hook();
+        $hook = sitesauce_deployments_get_build_hook();
 
-        if (!$webhook) {
+        if (!$hook) {
             return;
         }
 
-        if (false === filter_var($webhook, FILTER_VALIDATE_URL)) {
+        if (false === filter_var($hook, FILTER_VALIDATE_URL)) {
             return;
         }
-
-        $args = apply_filters('sitesauce_deployments_webhook_request_args', [
-            'blocking' => false
-        ]);
 
         do_action('sitesauce_deployments_before_fire_webhook');
 
-        $return = wp_remote_get($webhook, $args);
+        $return = file_get_contents($hook);
 
         do_action('sitesauce_deployments_after_fire_webhook');
 
