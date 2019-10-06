@@ -1,0 +1,17 @@
+on: push
+name: Asset/readme update
+jobs:
+  filtersForGitHubActions:
+    name: Filters for GitHub Actions
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Filters for GitHub Actions
+      uses: actions/bin/filter@master
+      with:
+        args: branch master
+    - name: Plugin Asset Update
+      uses: 10up/action-wordpress-plugin-asset-update@master
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
