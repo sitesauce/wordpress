@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Sitesauce ===
 Contributors: m1guelpf
 Donate link: https://sitesauce.app/
 Tags: sitesauce, static, jamstack, netlify
@@ -13,13 +13,9 @@ Connect your WordPress site with Sitesauce to keep your static site updated.
 
 == Description ==
 
-This plugin allows you to integrate your Wordpress site with Sitesauce by pinging the Sitesauce build hook every time your content is updated. To use this plugin, you'll first need a [Sitesauce account](https://sitesauce.app).
+This plugin allows you to integrate your WordPress site with Sitesauce by pinging the Sitesauce build hook every time your content is updated. To use this plugin, you'll first need a [Sitesauce account](https://sitesauce.app).
 
 == Installation ==
-
-This section describes how to install the plugin and get it working.
-
-e.g.
 
 1. Upload the plugin files to the `/wp-content/plugins/sitesauce` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
