@@ -6,7 +6,7 @@
  * Author: Miguel Piedrafita
  * Author URI: https://miguelpiedrafita.com
  * Plugin URI: https://sitesauce.app
- * Version: 0.0.1
+ * Version: 1.0.0
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -23,7 +23,7 @@ require_once(SITESAUCE_DEPLOYMENTS_PATH.'/src/App.php');
 
 function Sitesauce()
 {
-	return Sitesauce\Wordpress\App::instance();
+    return Sitesauce\Wordpress\App::instance();
 }
 
 register_activation_hook(SITESAUCE_DEPLOYMENTS_FILE, [Sitesauce(), 'activation']);

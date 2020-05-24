@@ -1,7 +1,7 @@
 === Sitesauce ===
 Contributors: m1guelpf
 Donate link: https://sitesauce.app/
-Tags: sitesauce, static, jamstack, netlify
+Tags: sitesauce, static, jamstack, vercel, zeit
 Requires at least: 4.6
 Tested up to: 5.2.3
 Stable tag: 4.3
