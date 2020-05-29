@@ -30,5 +30,8 @@ You can copy your Sitesauce build URL from the settings page on your Sitesauce d
 
 == Changelog ==
 
+= 1.1 =
+- Fix crash when saving or creating pages
+
 = 1.0 =
 - Initial Version
